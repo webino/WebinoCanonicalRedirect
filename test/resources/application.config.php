@@ -9,7 +9,7 @@ return array(
             'config/autoload/{,*.}{global,local}.php',
         ),
         'module_paths' => array(
-            'WebinoCanonicalRedirect' => __DIR__ . '/../../..',
+            'WebinoCanonicalRedirect' => __DIR__ . '/../..',
             './module',
             './vendor',
         ),
