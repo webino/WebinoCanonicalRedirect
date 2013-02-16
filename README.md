@@ -27,7 +27,7 @@
 
   - Copy, paste & override following settings to your configuration:
 
-        'webino_uri_normalize' => array(
+        'webino_canonical_redirect' => array(
             'enabled' => true,
             'www'     => false,     // bool = enabled|Use URI with www
             'slash'   => false,     // bool = enabled|Use URI with trailing slash
