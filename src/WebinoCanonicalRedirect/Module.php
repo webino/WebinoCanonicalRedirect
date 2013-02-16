@@ -18,7 +18,6 @@ use Zend\Mvc\MvcEvent;
  */
 class Module
 {
-
     /**
      * @return array
      */
@@ -52,16 +51,17 @@ class Module
      */
     public function onBootstrap(MvcEvent $event)
     {
-        $config = $event->getApplication()->getConfig();
+        $config  = $event->getApplication()->getConfig();
+        $request = $event->getRequest();
 
         if (empty($config['webino_canonical_redirect'])
             || empty($config['webino_canonical_redirect']['enabled'])
+            || !($request instanceof \Zend\Http\Request)
         ) {
             return;
         }
 
-        $request = $event->getRequest();
-        $uri     = new Uri\Normalize($request->getUri(), $request->getBaseUrl());
+        $uri = new Uri\Normalize($request->getUri(), $request->getBaseUrl());
 
         $uri
             ->www(!empty($config['webino_canonical_redirect']['www']))
@@ -86,5 +86,4 @@ class Module
             ->getEventManager()
             ->trigger(MvcEvent::EVENT_FINISH, $event);
     }
-
 }

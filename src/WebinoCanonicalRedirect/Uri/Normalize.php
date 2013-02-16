@@ -19,7 +19,6 @@ use Zend\Uri\UriInterface;
  */
 class Normalize
 {
-
     /**
      * @var UriInterface
      */
@@ -149,5 +148,4 @@ class Normalize
             return '';
         }
     }
-
 }
