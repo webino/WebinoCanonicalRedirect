@@ -1,12 +1,11 @@
 {
-    "name": "webino/webino-draw",
-    "description": "XHTML Layout Renderer for Zend Framework.",
+    "name": "webino/webino-canonical-redirect",
+    "description": "Site URL normalization for Zend Framework",
     "type": "library",
     "keywords": [
-        "xhtml", "html5", "render", "draw", "view",
-        "layout", "zf2", "zend", "framework"
+        "zf2", "zend", "framework", "canonical", "url", "redirect"
     ],
-    "homepage": "http://github.com/webino/WebinoDraw",
+    "homepage": "http://github.com/webino/WebinoCanonicalRedirect",
     "license": "New BSD License",
     "authors": [
         {
@@ -20,12 +19,9 @@
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.*"
     },
-    "suggest": {
-        "webino/ZF2NetteDebug": "User friendly Exception and Error handler ported from Nette Framework."
-    },
     "autoload": {
         "psr-0": {
-            "Webino": "src/"
+            "WebinoCanonicalRedirect": "src/"
         },
         "classmap": [
             "Module.php"
