@@ -6,7 +6,6 @@ php:
   - 5.4
 
 before_script:
-  - cd ..
   - git clone git://github.com/zendframework/ZendSkeletonApplication.git ._test/ZendSkeletonApplication
   - cd ._test/ZendSkeletonApplication
   - php composer.phar self-update
