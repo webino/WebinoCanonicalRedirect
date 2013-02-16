@@ -3,7 +3,7 @@
   [![Build Status](https://secure.travis-ci.org/webino/WebinoCanonicalRedirect.png?branch=master)](http://travis-ci.org/webino/WebinoCanonicalRedirect "Master")
   [![Build Status](https://secure.travis-ci.org/webino/WebinoCanonicalRedirect.png?branch=develop)](http://travis-ci.org/webino/WebinoCanonicalRedirect "Develop")
 
-  Allows you to configure www or trailing slash of your web site canonical URL. If wrong URL format is provided redirects to the normalized URL with HTTP 301.
+  Allows you to configure www and trailing slash of your web site canonical URL. If wrong URL format is provided redirects to the normalized URL with HTTP 301.
 
   If you can't or don't know how to configure your server rewrites to handle URL duplicate content, this module is the smart solution.
 
