@@ -1,0 +1,34 @@
+{
+    "name": "webino/webino-draw",
+    "description": "XHTML Layout Renderer for Zend Framework.",
+    "type": "library",
+    "keywords": [
+        "xhtml", "html5", "render", "draw", "view",
+        "layout", "zf2", "zend", "framework"
+    ],
+    "homepage": "http://github.com/webino/WebinoDraw",
+    "license": "New BSD License",
+    "authors": [
+        {
+            "name": "Peter Bačinský",
+            "email": "peter@bacinsky.sk",
+            "homepage": "http://www.bacinsky.sk/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.*"
+    },
+    "suggest": {
+        "webino/ZF2NetteDebug": "User friendly Exception and Error handler ported from Nette Framework."
+    },
+    "autoload": {
+        "psr-0": {
+            "Webino": "src/"
+        },
+        "classmap": [
+            "Module.php"
+        ]
+    }
+}
