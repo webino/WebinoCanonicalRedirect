@@ -46,9 +46,7 @@ class Normalize
         if (false !== strpos($uriPath, '/index.php')) {
 
             $this->uri->setPath(str_replace('/index.php', '', $uriPath));
-
             $this->isNormalized = true;
-
         }
     }
 
@@ -71,8 +69,8 @@ class Normalize
     public function www($useWww)
     {
         $host = $this->uri->getHost();
-        $use  = $useWww && preg_match('~^(www\.)?.+\..{2,}$~', $host);
-        $has  = preg_match('~^www\.~', $host);
+        $use  = $useWww && preg_match('~^(.+\.)?.+\..{2,}$~', $host);
+        $has  = preg_match('~^.+\..+\.~', $host);
 
         if (($use && $has) || (!$use && !$has)) {
             return $this;

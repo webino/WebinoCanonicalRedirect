@@ -15,15 +15,16 @@ class NormalizeTest
      */
     protected $object;
 
+    protected $uri;
+
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
     protected function setUp()
     {
-        $uri = $this->getMock('\Zend\Uri\Uri');
-
-        $this->object = new Normalize($uri);
+        $this->uri    = $this->getMock('\Zend\Uri\Uri');
+        $this->object = new Normalize($this->uri);
     }
 
     /**
@@ -47,16 +48,98 @@ class NormalizeTest
         );
     }
 
+
     /**
      * @covers WebinoCanonicalRedirect\Uri\Normalize::www
-     * @todo Implement testWww().
      */
-    public function testWww()
+    public function testWwwUseHas()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->uri->expects($this->once())
+            ->method('getHost')
+            ->will($this->returnValue('www.example.com'));
+
+        $this->uri->expects($this->never())
+            ->method('setHost');
+
+        $this->object->www(true);
+    }
+
+    /**
+     * @covers WebinoCanonicalRedirect\Uri\Normalize::www
+     */
+    public function testWwwUseHasNot()
+    {
+        $this->uri->expects($this->once())
+            ->method('getHost')
+            ->will($this->returnValue('example.com'));
+
+        $this->uri->expects($this->once())
+            ->method('setHost')
+            ->with('www.example.com');
+
+        $this->object->www(true);
+    }
+
+    /**
+     * @covers WebinoCanonicalRedirect\Uri\Normalize::www
+     */
+    public function testWwwUseSubdomain()
+    {
+        $this->uri->expects($this->once())
+            ->method('getHost')
+            ->will($this->returnValue('sub.example.com'));
+
+        $this->uri->expects($this->never())
+            ->method('setHost');
+
+        $this->object->www(true);
+    }
+
+    /**
+     * @covers WebinoCanonicalRedirect\Uri\Normalize::www
+     */
+    public function testWwwUseNotHas()
+    {
+        $this->uri->expects($this->once())
+            ->method('getHost')
+            ->will($this->returnValue('www.example.com'));
+
+        $this->uri->expects($this->once())
+            ->method('setHost')
+            ->with('example.com');
+
+        $this->object->www(false);
+    }
+
+    /**
+     * @covers WebinoCanonicalRedirect\Uri\Normalize::www
+     */
+    public function testWwwUseNotHasNot()
+    {
+        $this->uri->expects($this->once())
+            ->method('getHost')
+            ->will($this->returnValue('example.com'));
+
+        $this->uri->expects($this->never())
+            ->method('setHost');
+
+        $this->object->www(false);
+    }
+
+    /**
+     * @covers WebinoCanonicalRedirect\Uri\Normalize::www
+     */
+    public function testWwwUseNotSubdomain()
+    {
+        $this->uri->expects($this->once())
+            ->method('getHost')
+            ->will($this->returnValue('sub.example.com'));
+
+        $this->uri->expects($this->once())
+            ->method('setHost')
+            ->with('sub.example.com');
+
+        $this->object->www(false);
     }
 
     /**
