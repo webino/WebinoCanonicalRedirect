@@ -19,31 +19,6 @@ use Zend\Mvc\MvcEvent;
 class Module
 {
     /**
-     * @return array
-     */
-    public function getConfig()
-    {
-        return include __DIR__ . '/../../config/module.config.php';
-    }
-
-    /**
-     * @return array
-     */
-    public function getAutoloaderConfig()
-    {
-        return array(
-            'Zend\Loader\ClassMapAutoloader' => array(
-                __DIR__ . '/../../autoload_classmap.php',
-            ),
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/../../src/' . __NAMESPACE__,
-                ),
-            ),
-        );
-    }
-
-    /**
      * Redirect to the normalized URI path
      *
      * @param \Zend\Mvc\MvcEvent $event
@@ -85,5 +60,30 @@ class Module
             ->getApplication()
             ->getEventManager()
             ->trigger(MvcEvent::EVENT_FINISH, $event);
+    }
+
+    /**
+     * @return array
+     */
+    public function getConfig()
+    {
+        return include __DIR__ . '/../../config/module.config.php';
+    }
+
+    /**
+     * @return array
+     */
+    public function getAutoloaderConfig()
+    {
+        return array(
+            'Zend\Loader\ClassMapAutoloader' => array(
+                __DIR__ . '/autoload_classmap.php',
+            ),
+            'Zend\Loader\StandardAutoloader' => array(
+                'namespaces' => array(
+                    __NAMESPACE__ => __DIR__,
+                ),
+            ),
+        );
     }
 }
