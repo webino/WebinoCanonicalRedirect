@@ -26,7 +26,7 @@ class Module implements
     ConfigProviderInterface
 {
     /**
-     * Redirect to thecanonicalized URI path
+     * Redirect to the canonicalized URI path
      *
      * @param EventInterface $event
      */
@@ -34,28 +34,26 @@ class Module implements
     {
         /* @var $event MvcEvent */
 
-        $config  = $event->getApplication()->getConfig();
-        $request = $event->getRequest();
+        $app      = $event->getApplication();
+        $services = $app->getServiceManager();
+        $options  = $services->get('WebinoCanonicalRedirect\Options\ModuleOptions');
 
-        if (empty($config['webino_canonical_redirect'])
-            || empty($config['webino_canonical_redirect']['enabled'])
-            || !($request instanceof HttpRequest)
+        if (!$options->isEnabled()
+            || !($event->getRequest() instanceof HttpRequest)
         ) {
             return;
         }
 
-        $uri = new Uri\Normalize($request->getUri(), $request->getBaseUrl());
-
+        $uri = $services->get('WebinoCanonicalRedirect\Uri\Canonicalizer');
         $uri
-            ->www(!empty($config['webino_canonical_redirect']['www']))
-            ->trailingSlash(!empty($config['webino_canonical_redirect']['slash']));
+            ->www($options->useWww())
+            ->trailingSlash($options->useSlash());
 
         if (!$uri->isCanonicalized()) {
             return;
         }
 
         $event->stopPropagation();
-
         $event
             ->getResponse()
             ->setStatusCode(301)
@@ -64,9 +62,7 @@ class Module implements
 
         unset($uri);
 
-        $event
-            ->getApplication()
-            ->getEventManager()
+        $app->getEventManager()
             ->trigger(MvcEvent::EVENT_FINISH, $event);
     }
 

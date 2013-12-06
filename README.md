@@ -61,6 +61,13 @@
 
   2. Open project in (NetBeans) IDE
 
+  3. To check module integration with the skeleton application open following directory via web browser:
+     `._test/ZendSkeletonApplication/public/`
+
+     e.g. [http://localhost/WebinoCanonicalRedirect/._test/ZendSkeletonApplication/public/](http://localhost/WebinoCanonicalRedirect/._test/ZendSkeletonApplication/public/)
+
+  4. Integration test resources are in directory: `test/resources`
+
 ### Testing
 
   - Run `phpunit` in the test directory
@@ -76,10 +83,6 @@
       - [phpmd](http://phpmd.org/download/index.html)
 
     *NOTE: Those tools are present after development environment is based.*
-
-## Todo
-
-  - Tests
 
 ## Addendum
 

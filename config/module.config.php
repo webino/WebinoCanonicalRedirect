@@ -12,10 +12,10 @@
  * Do not write your custom settings into this file
  */
 return array(
-    'webino_canonical_redirect' => array(
-        'enabled' => true,
-        'www'     => false,        // bool = enabled|Site URI with www
-        'slash'   => false,        // bool = enabled|Site URI with trailing slash
-        'entry'   => '/index.php', // string = Entry file base name
+    'service_manager' => array(
+        'factories' => array(
+            'WebinoCanonicalRedirect\Options\ModuleOptions' => 'WebinoCanonicalRedirect\Factory\ModuleOptionsFactory',
+            'WebinoCanonicalRedirect\Uri\Canonicalizer'     => 'WebinoCanonicalRedirect\Factory\CanonicalizerFactory',
+        ),
     ),
 );

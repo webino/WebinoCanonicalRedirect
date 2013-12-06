@@ -13,7 +13,7 @@ namespace WebinoCanonicalRedirect\Uri;
 use Zend\Uri\UriInterface;
 
 /**
- *
+ * URI canonicalizer
  */
 class Canonicalizer
 {
@@ -35,15 +35,15 @@ class Canonicalizer
     /**
      * @param UriInterface $uri
      */
-    public function __construct(UriInterface $uri, $baseUrl = null, $entryBaseName = '/index.php')
+    public function __construct(UriInterface $uri, $baseUrl = null)
     {
         $this->uri     = $uri;
         $this->baseUrl = $baseUrl;
         $uriPath       = $this->uri->getPath();
 
-        if (false !== strpos($uriPath, $entryBaseName)) {
+        if (false !== strpos($uriPath, '/index.php')) {
 
-            $this->uri->setPath(str_replace($entryBaseName, '', $uriPath));
+            $this->uri->setPath(str_replace('/index.php', '', $uriPath));
             $this->isCanonicalized = true;
         }
     }
@@ -66,15 +66,17 @@ class Canonicalizer
      */
     public function www($useWww)
     {
-        $host = $this->uri->getHost();
-        $use  = $useWww && preg_match('~^(.+\.)?.+\..{2,}$~', $host);
-        $has  = preg_match('~^.+\..+\.~', $host);
+        $host        = $this->uri->getHost();
+        $has         = (0 === strpos($host, 'www'));
+        $isSubdomain = (!$has && 2 <= substr_count($host, '.'));
 
-        if (($use && $has) || (!$use && !$has)) {
+        if (($has && $useWww) || (!$has && !$useWww)
+            || $isSubdomain
+        ) {
             return $this;
         }
 
-        $host = $use ? 'www.' . $host : preg_replace('~^www\.~', '', $host);
+        $host = $useWww ? 'www.' . $host : preg_replace('~^www\.~', '', $host);
         $this->uri->setHost($host);
         $this->isCanonicalized = true;
 
@@ -97,10 +99,10 @@ class Canonicalizer
             return $this;
         }
 
-        $use = ($useTrailingSlash && !preg_match('~\.[a-zA-Z0-9]{1,}$~', $uriPath));
         $has = ('/' === $fullUriPath[strlen($fullUriPath) - 1]);
+        $use = ($useTrailingSlash && !preg_match('~\.[a-zA-Z0-9]{1,}$~', $uriPath));
 
-        if (($use && $has) || (!$use && !$has)) {
+        if (($has && $use) || (!$has && !$use)) {
             return $this;
         }
 
