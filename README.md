@@ -53,6 +53,8 @@
   - [Phing](http://www.phing.info/trac/wiki/Users/Download)
   - [PHPUnit](http://phpunit.de/manual/3.7/en/installation.html)
   - [PSR-2 coding style](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)
+  - [Web browser](https://www.google.com/intl/sk/chrome/browser/) (recommended)
+  - [Selenium](http://www.seleniumhq.org/) (optional)
 
 ### Setup
 
