@@ -15,6 +15,7 @@ use Zend\EventManager\EventInterface;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\BootstrapListenerInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use Zend\Mvc\MvcEvent;
 
 /**
  * WebinoCanonicalRedirect module
@@ -31,7 +32,7 @@ class Module implements
      */
     public function onBootstrap(EventInterface $event)
     {
-        /* @var $event \Zend\Mvc\MvcEvent */
+        /* @var $event MvcEvent */
 
         $config  = $event->getApplication()->getConfig();
         $request = $event->getRequest();

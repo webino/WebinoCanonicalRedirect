@@ -1,11 +1,22 @@
-# Site URL normalization for Zend Framework
+# Site URI canonicalization <br /> for Zend Framework 2
 
-  [![Build Status](https://secure.travis-ci.org/webino/WebinoCanonicalRedirect.png?branch=master)](http://travis-ci.org/webino/WebinoCanonicalRedirect "Master")
-  [![Build Status](https://secure.travis-ci.org/webino/WebinoCanonicalRedirect.png?branch=develop)](http://travis-ci.org/webino/WebinoCanonicalRedirect "Develop")
+  [![Build Status](https://secure.travis-ci.org/webino/WebinoCanonicalRedirect.png?branch=master)](http://travis-ci.org/webino/WebinoCanonicalRedirect "Master Build Status")
+  [![Coverage Status](https://coveralls.io/repos/webino/WebinoCanonicalRedirect/badge.png?branch=master)](https://coveralls.io/r/webino/WebinoCanonicalRedirect?branch=master "Master Coverage Status")
+  [![Build Status](https://secure.travis-ci.org/webino/WebinoCanonicalRedirect.png?branch=develop)](http://travis-ci.org/webino/WebinoCanonicalRedirect "Develop Build Status")
+  [![Coverage Status](https://coveralls.io/repos/webino/WebinoCanonicalRedirect/badge.png?branch=develop)](https://coveralls.io/r/webino/WebinoCanonicalRedirect?branch=develop "Develop Coverage Status")
+  [![Dependency Status](https://www.versioneye.com/user/projects/52a19caa632bac3bd6000040/badge.png)](https://www.versioneye.com/user/projects/52a19caa632bac3bd6000040 "Develop Dependency Status")
 
-  Allows you to configure www and trailing slash of your web site canonical URL. If wrong URL format is provided redirects to the normalized URL with HTTP 301.
+  [![Latest Stable Version](https://poser.pugx.org/webino/webino-draw/v/stable.png)](https://packagist.org/packages/webino/webino-draw "Latest Stable Version")
+  [![Latest Unstable Version](https://poser.pugx.org/webino/webino-draw/v/unstable.png)](https://packagist.org/packages/webino/webino-draw "Latest Unstable Version")
+  [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/webino/WebinoCanonicalRedirect/badges/quality-score.png?s=f608383f40b945e5667f9a0e1ae9c41616454a13)](https://scrutinizer-ci.com/g/webino/WebinoCanonicalRedirect/ "Quality Score")
+  [![Daily Downloads](https://poser.pugx.org/webino/webino-draw/d/daily.png)](https://packagist.org/packages/webino/webino-draw "Daily Downloads")
+  [![Montly Downloads](https://poser.pugx.org/webino/webino-draw/d/monthly.png)](https://packagist.org/packages/webino/webino-draw "Monthly Downloads")
+  [![Total Downloads](https://poser.pugx.org/webino/webino-draw/downloads.png)](https://packagist.org/packages/webino/webino-draw "Total Downloads")
 
-  If you can't or don't know how to configure your server rewrites to handle URL duplicate content, this module is the smart solution.
+
+  Allows you to configure www and trailing slash of your web site canonical URI. If wrong URI format is provided redirects to the normalized URI with HTTP 301.
+
+  If you can't or don't know how to configure your web server rewrites to handle URI duplicate content, this module is the smart solution.
 
   **Under development, please report any issues.**
 
@@ -19,9 +30,8 @@
 
   Following steps are necessary to get this module working, considering a zf2-skeleton or very similar application:
 
-  1. Add `"minimum-stability": "dev"` to your composer.json, because this module is under development.
-  2. Run: `php composer.phar require webino/webino-canonical-redirect:dev-develop`
-  3. Add `WebinoCanonicalRedirect` to the enabled modules list.
+  1. Run: `php composer.phar require webino/webino-canonical-redirect:0.*`
+  3. Add `WebinoCanonicalRedirect` to the enabled modules list
 
 ## QuickStart
 
@@ -32,6 +42,40 @@
             'www'     => false,     // bool = enabled|Use URI with www
             'slash'   => false,     // bool = enabled|Use URI with trailing slash
         ),
+
+## Develop
+
+**Requirements**
+
+  - [Linux](http://www.ubuntu.com/download)
+  - [NetBeans](https://netbeans.org/downloads/) (optional)
+  - [Phing](http://www.phing.info/trac/wiki/Users/Download)
+  - [PHPUnit](http://phpunit.de/manual/3.7/en/installation.html)
+  - [PSR-2 coding style](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)
+
+### Setup
+
+  1. Clone this repository and run: `phing update`
+
+     *Now your development environment is set.*
+
+  2. Open project in (NetBeans) IDE
+
+### Testing
+
+  - Run `phpunit` in the test directory
+  - Run `phing test` in the module directory to run the tests and code analysis
+
+    *NOTE: To run the code analysis there are some tool requirements.*
+      - [apigen](http://apigen.org/##installation)
+      - [pdepend](http://pdepend.org/)
+      - [phpcb](https://github.com/Mayflower/PHP_CodeBrowser)
+      - [phpcpd](https://github.com/sebastianbergmann/phpcpd)
+      - [phpcs](http://pear.php.net/package/PHP_CodeSniffer/)
+      - [phploc](https://github.com/sebastianbergmann/phploc)
+      - [phpmd](http://phpmd.org/download/index.html)
+
+    *NOTE: Those tools are present after development environment is based.*
 
 ## Todo
 

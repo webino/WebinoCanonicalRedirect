@@ -1,9 +1,9 @@
 {
     "name": "webino/webino-canonical-redirect",
-    "description": "Site URL normalization for Zend Framework",
+    "description": "Site URI canonicalization for Zend Framework 2",
     "type": "library",
     "keywords": [
-        "zf2", "zend", "framework", "canonical", "url", "redirect"
+        "canonical", "url", "redirect", "zf2", "zend", "framework"
     ],
     "homepage": "http://github.com/webino/WebinoCanonicalRedirect",
     "license": "New BSD License",
@@ -15,16 +15,31 @@
             "role": "Developer"
         }
     ],
+    "minimum-stability" : "dev",
     "require": {
         "php": ">=5.3.3",
+        "zendframework/zend-uri": "2.*"
+    },
+    "suggest": {
+        "zendframework/zend-modulemanager": "To use it as a Zend Framework module",
+        "zendframework/zend-mvc": "For URI canonicalization on application bootstrap"
+    },
+    "require-dev": {
+        "apigen/apigen": "2.*",
+        "mayflower/php-codebrowser": "*",
+        "pdepend/pdepend": "1.*",
+        "phploc/phploc": "*",
+        "phpmd/phpmd": "1.*",
+        "phpunit/phpunit": "3.7.*",
+        "satooshi/php-coveralls": "0.*",
+        "sebastian/phpcpd": "*",
+        "squizlabs/php_codesniffer": "1.*",
+        "webino/zf2nette-debug" : "1.*",
         "zendframework/zendframework": "2.*"
     },
     "autoload": {
         "psr-0": {
             "WebinoCanonicalRedirect": "src/"
-        },
-        "classmap": [
-            "Module.php"
-        ]
+        }
     }
 }
