@@ -7,12 +7,12 @@
   [![Coverage Status](https://coveralls.io/repos/webino/WebinoCanonicalRedirect/badge.png?branch=develop)](https://coveralls.io/r/webino/WebinoCanonicalRedirect?branch=develop "Develop Coverage Status")
   [![Dependency Status](https://www.versioneye.com/user/projects/52a19caa632bac3bd6000040/badge.png)](https://www.versioneye.com/user/projects/52a19caa632bac3bd6000040 "Develop Dependency Status")
 
-  [![Latest Stable Version](https://poser.pugx.org/webino/webino-draw/v/stable.png)](https://packagist.org/packages/webino/webino-draw "Latest Stable Version")
-  [![Latest Unstable Version](https://poser.pugx.org/webino/webino-draw/v/unstable.png)](https://packagist.org/packages/webino/webino-draw "Latest Unstable Version")
+  [![Latest Stable Version](https://poser.pugx.org/webino/webino-canonical-redirect/v/stable.png)](https://packagist.org/packages/webino/webino-canonical-redirect "Latest Stable Version")
+  [![Latest Unstable Version](https://poser.pugx.org/webino/webino-canonical-redirect/v/unstable.png)](https://packagist.org/packages/webino/webino-canonical-redirect "Latest Unstable Version")
   [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/webino/WebinoCanonicalRedirect/badges/quality-score.png?s=f608383f40b945e5667f9a0e1ae9c41616454a13)](https://scrutinizer-ci.com/g/webino/WebinoCanonicalRedirect/ "Quality Score")
-  [![Daily Downloads](https://poser.pugx.org/webino/webino-draw/d/daily.png)](https://packagist.org/packages/webino/webino-draw "Daily Downloads")
-  [![Montly Downloads](https://poser.pugx.org/webino/webino-draw/d/monthly.png)](https://packagist.org/packages/webino/webino-draw "Monthly Downloads")
-  [![Total Downloads](https://poser.pugx.org/webino/webino-draw/downloads.png)](https://packagist.org/packages/webino/webino-draw "Total Downloads")
+  [![Daily Downloads](https://poser.pugx.org/webino/webino-canonical-redirect/d/daily.png)](https://packagist.org/packages/webino/webino-canonical-redirect "Daily Downloads")
+  [![Montly Downloads](https://poser.pugx.org/webino/webino-canonical-redirect/d/monthly.png)](https://packagist.org/packages/webino/webino-canonical-redirect "Monthly Downloads")
+  [![Total Downloads](https://poser.pugx.org/webino/webino-canonical-redirect/downloads.png)](https://packagist.org/packages/webino/webino-canonical-redirect "Total Downloads")
 
 
   Allows you to configure www and trailing slash of your web site canonical URI. If wrong URI format is provided redirects to the normalized URI with HTTP 301.
@@ -53,6 +53,8 @@
   - [Phing](http://www.phing.info/trac/wiki/Users/Download)
   - [PHPUnit](http://phpunit.de/manual/3.7/en/installation.html)
   - [PSR-2 coding style](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)
+  - [Web browser](https://www.google.com/intl/sk/chrome/browser/) (recommended)
+  - [Selenium](http://www.seleniumhq.org/) (optional)
 
 ### Setup
 
