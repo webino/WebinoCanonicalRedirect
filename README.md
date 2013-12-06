@@ -2,6 +2,7 @@
 
   [![Build Status](https://secure.travis-ci.org/webino/WebinoCanonicalRedirect.png?branch=master)](http://travis-ci.org/webino/WebinoCanonicalRedirect "Master Build Status")
   [![Coverage Status](https://coveralls.io/repos/webino/WebinoCanonicalRedirect/badge.png?branch=master)](https://coveralls.io/r/webino/WebinoCanonicalRedirect?branch=master "Master Coverage Status")
+  [![Dependency Status](https://www.versioneye.com/user/projects/52a21914632bac3e8600007c/badge.png)](https://www.versioneye.com/user/projects/52a21914632bac3e8600007c "Master Dependency Status")
   [![Build Status](https://secure.travis-ci.org/webino/WebinoCanonicalRedirect.png?branch=develop)](http://travis-ci.org/webino/WebinoCanonicalRedirect "Develop Build Status")
   [![Coverage Status](https://coveralls.io/repos/webino/WebinoCanonicalRedirect/badge.png?branch=develop)](https://coveralls.io/r/webino/WebinoCanonicalRedirect?branch=develop "Develop Coverage Status")
   [![Dependency Status](https://www.versioneye.com/user/projects/52a19caa632bac3bd6000040/badge.png)](https://www.versioneye.com/user/projects/52a19caa632bac3bd6000040 "Develop Dependency Status")
