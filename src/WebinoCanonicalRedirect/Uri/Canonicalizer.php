@@ -49,7 +49,7 @@ class Canonicalizer
     }
 
     /**
-     * Return true if URI was normalized
+     * Return true if URI was canonicalized
      *
      * @return bool
      */
