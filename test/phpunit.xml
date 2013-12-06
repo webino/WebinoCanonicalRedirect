@@ -2,6 +2,9 @@
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">
             <directory>../src</directory>
+            <exclude>
+                <file>../src/WebinoCanonicalRedirect/autoload_classmap.php</file>
+            </exclude>
         </whitelist>
     </filter>
     <testsuites>
