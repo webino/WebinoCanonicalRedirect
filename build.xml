@@ -31,8 +31,28 @@
 
         <phingCall target="get-composer"/>
 
+        <echo>Getting latest ${test.appname}</echo>
+        <if>
+            <available file="${test.appdir}" type="dir" />
+            <then>
+                <echo>Pulling ...</echo>
+                <exec command="cd ${test.appdir} &amp;&amp; git reset HEAD --hard" checkreturn="true" logoutput="true"/>
+                <exec command="cd ${test.appdir} &amp;&amp; git clean -f -d -x" checkreturn="true" logoutput="true"/>
+                <exec command="cd ${test.appdir} &amp;&amp; git pull ${test.appremote} ${test.appbranch}" checkreturn="true" logoutput="true"/>
+            </then>
+            <else>
+                <echo>Clonning ...</echo>
+                <exec command="git clone ${test.appgit} ${test.appdir}" checkreturn="true" logoutput="true"/>
+            </else>
+        </if>
+
         <echo>Updating ...</echo>
+        <delete dir="${test.vendorbasedir}"/>
+        <exec command="ln -s ${module.vendordir} ${test.vendorbasedir}" checkreturn="true" logoutput="true"/>
         <exec command="cd ${project.basedir} &amp;&amp; php composer.phar update --dev --no-interaction" checkreturn="true" logoutput="true"/>
+
+        <delete file="${test.appcfg}"/>
+        <exec command="ln -s ${test.apptestcfg} ${test.appcfg}" checkreturn="true" logoutput="true"/>
     </target>
 
     <target name="test" depends="clear-log">
