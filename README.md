@@ -15,7 +15,7 @@
   [![Total Downloads](https://poser.pugx.org/webino/webino-canonical-redirect/downloads.png)](https://packagist.org/packages/webino/webino-canonical-redirect "Total Downloads")
 
 
-  Allows you to configure www and trailing slash of your web site canonical URI. If wrong URI format is provided redirects to the normalized URI with HTTP 301.
+  Allows you to configure www and trailing slash of your web site canonical URI. If wrong URI format is provided redirects to the canonicalized URI with HTTP 301.
 
   If you can't or don't know how to configure your web server rewrites to handle URI duplicate content, this module is the smart solution.
 
