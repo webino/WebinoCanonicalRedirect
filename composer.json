@@ -1,9 +1,9 @@
 {
     "name": "webino/webino-canonical-redirect",
-    "description": "Site URI canonicalization for Zend Framework 2",
+    "description": "Site URI Canonicalizer for Zend Framework 2",
     "type": "library",
     "keywords": [
-        "canonical", "url", "redirect", "zf2", "zend", "framework"
+        "canonical", "uri", "url", "redirect", "zf2", "zend", "framework"
     ],
     "homepage": "http://github.com/webino/WebinoCanonicalRedirect",
     "license": "New BSD License",
