@@ -64,7 +64,7 @@ class CanonicalizerTest extends \PHPUnit_Framework_TestCase
      * @covers WebinoCanonicalRedirect\Uri\Canonicalizer::__construct
      * @covers WebinoCanonicalRedirect\Uri\Canonicalizer::isCanonicalized
      */
-    public function testIsCanonicalizedCostOfIndexPhp()
+    public function testIsCanonicalizedCosOfIndexPhp()
     {
         $this->uri->expects($this->once())
             ->method('getPath')
