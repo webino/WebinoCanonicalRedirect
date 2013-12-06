@@ -13,7 +13,7 @@ namespace WebinoCanonicalRedirect\Uri;
 use Zend\Uri\UriInterface;
 
 /**
- * URI canonicalizer
+ * URI Canonicalizer
  */
 class Canonicalizer
 {
@@ -49,7 +49,7 @@ class Canonicalizer
     }
 
     /**
-     * Return true if URI was normalized
+     * Return true if URI was canonicalized
      *
      * @return bool
      */
@@ -84,7 +84,7 @@ class Canonicalizer
     }
 
     /**
-     * Sanitize URI to use trailingSlash or not
+     * Canonicalize URI to use trailingSlash or not
      *
      * @param bool $useTrailingSlash
      * @return self

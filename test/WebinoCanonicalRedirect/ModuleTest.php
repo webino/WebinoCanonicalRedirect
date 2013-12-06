@@ -81,19 +81,21 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
             ->method('getEventManager')
             ->will($this->returnValue($this->events));
 
-        $testCase = $this; // TODO PHP 5.4
+        $options       = $this->options; // TODO PHP 5.4
+        $canonicalizer = $this->canonicalizer; // TODO PHP 5.4
+        $testCase      = $this; // TODO PHP 5.4
         $services->expects($this->any())
             ->method('get')
             ->will(
                 $this->returnCallback(
-                    function ($serviceName) use ($testCase) {
+                    function ($serviceName) use ($options, $canonicalizer, $testCase) {
                         switch ($serviceName) {
 
                             case 'WebinoCanonicalRedirect\Options\ModuleOptions':
-                                return $testCase->options;
+                                return $options;
 
                             case 'WebinoCanonicalRedirect\Uri\Canonicalizer':
-                                return $testCase->canonicalizer;
+                                return $canonicalizer;
 
                             default:
                                 $testCase->fail('Unexpected service ' . $serviceName);
