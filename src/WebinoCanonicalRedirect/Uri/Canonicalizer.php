@@ -1,10 +1,11 @@
 <?php
 /**
- * Webino (http://webino.sk/)
+ * Webino (http://webino.sk)
  *
- * @copyright   Copyright (c) 2013 Webino, s. r. o. (http://webino.sk/)
+ * @link        https://github.com/webino/WebinoCanonicalRedirect for the canonical source repository
+ * @copyright   Copyright (c) 2013 Webino, s. r. o. (http://webino.sk)
+ * @author      Peter Bačinský <peter@bacinsky.sk>
  * @license     New BSD License
- * @package     WebinoCanonicalRedirect
  */
 
 namespace WebinoCanonicalRedirect\Uri;
@@ -12,12 +13,9 @@ namespace WebinoCanonicalRedirect\Uri;
 use Zend\Uri\UriInterface;
 
 /**
- * @category    Webino
- * @package     WebinoCanonicalRedirect
- * @subpackage  WebinoCanonicalRedirect\Uri
- * @author      Peter Bačinský <peter@bacinsky.sk>
+ *
  */
-class Normalize
+class Canonicalizer
 {
     /**
      * @var UriInterface
@@ -32,21 +30,21 @@ class Normalize
     /**
      * @var bool
      */
-    protected $isNormalized = false;
+    protected $isCanonicalized = false;
 
     /**
-     * @param \Zend\Uri\UriInterface $uri
+     * @param UriInterface $uri
      */
-    public function __construct(UriInterface $uri, $baseUrl = null)
+    public function __construct(UriInterface $uri, $baseUrl = null, $entryBaseName = '/index.php')
     {
         $this->uri     = $uri;
         $this->baseUrl = $baseUrl;
         $uriPath       = $this->uri->getPath();
 
-        if (false !== strpos($uriPath, '/index.php')) {
+        if (false !== strpos($uriPath, $entryBaseName)) {
 
-            $this->uri->setPath(str_replace('/index.php', '', $uriPath));
-            $this->isNormalized = true;
+            $this->uri->setPath(str_replace($entryBaseName, '', $uriPath));
+            $this->isCanonicalized = true;
         }
     }
 
@@ -55,16 +53,16 @@ class Normalize
      *
      * @return bool
      */
-    public function isNormalized()
+    public function isCanonicalized()
     {
-        return $this->isNormalized;
+        return $this->isCanonicalized;
     }
 
     /**
-     * Sanitize URI to use www or not
+     * Canonicalize URI to use www or not
      *
      * @param bool $useWww
-     * @return \WebinoUriFormat\Uri\Sanitize
+     * @return self
      */
     public function www($useWww)
     {
@@ -76,15 +74,9 @@ class Normalize
             return $this;
         }
 
-        if ($use) {
-            $host = 'www.' . $host;
-        } else {
-            $host = preg_replace('~^www\.~', '', $host);
-        }
-
+        $host = $use ? 'www.' . $host : preg_replace('~^www\.~', '', $host);
         $this->uri->setHost($host);
-
-        $this->isNormalized = true;
+        $this->isCanonicalized = true;
 
         return $this;
     }
@@ -93,7 +85,7 @@ class Normalize
      * Sanitize URI to use trailingSlash or not
      *
      * @param bool $useTrailingSlash
-     * @return \WebinoUriFormat\Uri\Sanitize
+     * @return self
      */
     public function trailingSlash($useTrailingSlash)
     {
@@ -112,13 +104,9 @@ class Normalize
             return $this;
         }
 
-        if ($use) {
-            $this->uri->setPath('/' . $uriPath . '/');
-        } else {
-            $this->uri->setPath('/' . $uriPath);
-        }
-
-        $this->isNormalized = true;
+        $newUriPath = $use ? '/' . $uriPath . '/' : '/' . $uriPath;
+        $this->uri->setPath($newUriPath);
+        $this->isCanonicalized = true;
 
         return $this;
     }
@@ -142,7 +130,7 @@ class Normalize
     {
         try {
             return $this->toString();
-        } catch (\Exception $e) {
+        } catch (\Exception $exc) {
             return '';
         }
     }

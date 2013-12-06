@@ -1,37 +1,44 @@
 <?php
 /**
- * Webino (http://webino.sk/)
+ * Webino (http://webino.sk)
  *
- * @copyright   Copyright (c) 2013 Webino, s. r. o. (http://webino.sk/)
+ * @link        https://github.com/webino/WebinoCanonicalRedirect for the canonical source repository
+ * @copyright   Copyright (c) 2013 Webino, s. r. o. (http://webino.sk)
+ * @author      Peter Bačinský <peter@bacinsky.sk>
  * @license     New BSD License
- * @package     WebinoCanonicalRedirect
  */
 
 namespace WebinoCanonicalRedirect;
 
-use Zend\Mvc\MvcEvent;
+use Zend\Http\Request as HttpRequest;
+use Zend\EventManager\EventInterface;
+use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
+use Zend\ModuleManager\Feature\BootstrapListenerInterface;
+use Zend\ModuleManager\Feature\ConfigProviderInterface;
 
 /**
- * @category    Webino
- * @package     WebinoCanonicalRedirect
- * @author      Peter Bačinský <peter@bacinsky.sk>
+ * WebinoCanonicalRedirect module
  */
-class Module
+class Module implements
+    AutoloaderProviderInterface,
+    BootstrapListenerInterface,
+    ConfigProviderInterface
 {
     /**
-     * Redirect to the normalized URI path
+     * Redirect to thecanonicalized URI path
      *
-     * @param \Zend\Mvc\MvcEvent $event
-     * @return void
+     * @param EventInterface $event
      */
-    public function onBootstrap(MvcEvent $event)
+    public function onBootstrap(EventInterface $event)
     {
+        /* @var $event \Zend\Mvc\MvcEvent */
+
         $config  = $event->getApplication()->getConfig();
         $request = $event->getRequest();
 
         if (empty($config['webino_canonical_redirect'])
             || empty($config['webino_canonical_redirect']['enabled'])
-            || !($request instanceof \Zend\Http\Request)
+            || !($request instanceof HttpRequest)
         ) {
             return;
         }
@@ -42,7 +49,7 @@ class Module
             ->www(!empty($config['webino_canonical_redirect']['www']))
             ->trailingSlash(!empty($config['webino_canonical_redirect']['slash']));
 
-        if (!$uri->isNormalized()) {
+        if (!$uri->isCanonicalized()) {
             return;
         }
 
