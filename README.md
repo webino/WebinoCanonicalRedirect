@@ -1,4 +1,4 @@
-# Site URI canonicalization <br /> for Zend Framework 2
+# Site URI Canonicalizer <br /> for Zend Framework 2
 
   [![Build Status](https://secure.travis-ci.org/webino/WebinoCanonicalRedirect.png?branch=master)](http://travis-ci.org/webino/WebinoCanonicalRedirect "Master Build Status")
   [![Coverage Status](https://coveralls.io/repos/webino/WebinoCanonicalRedirect/badge.png?branch=master)](https://coveralls.io/r/webino/WebinoCanonicalRedirect?branch=master "Master Coverage Status")
@@ -22,7 +22,7 @@
 
 ## Features
 
-  - Redirects `..domain.tld/index.php` to `..domain.tld/`
+  - Redirects `..domain.tld/index.php` to `..domain.tld`
   - Configure site to use www  `www.domain.tld` or not `domain.tld`
   - Configure site to use trailing slash `..domain.tld/something/` or not `..domain.tld/something`
 
