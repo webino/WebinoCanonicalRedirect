@@ -1,0 +1,20 @@
+<?php
+/**
+ * Webino (http://webino.sk)
+ *
+ * @link        https://github.com/webino/WebinoCanonicalRedirect for the canonical source repository
+ * @copyright   Copyright (c) 2013 Webino, s. r. o. (http://webino.sk)
+ * @author      Peter Bačinský <peter@bacinsky.sk>
+ * @license     New BSD License
+ */
+
+/**
+ * Copy-paste this file to your config/autoload folder (don't forget to remove the .dist extension!)
+ */
+return array(
+    'webino_canonical_redirect' => array(
+        'enabled' => true,
+        'www'     => false,        // bool = enabled|Site URI with www
+        'slash'   => false,        // bool = enabled|Site URI with trailing slash
+    ),
+);
