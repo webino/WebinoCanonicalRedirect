@@ -177,6 +177,38 @@ class CanonicalizerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers WebinoCanonicalRedirect\Uri\Canonicalizer::www
+     */
+    public function testWwwUseLocalhost()
+    {
+        $this->uri->expects($this->once())
+            ->method('getHost')
+            ->will($this->returnValue('localhost'));
+
+        $this->uri->expects($this->never())
+            ->method('setHost');
+
+        $this->object->www(true);
+        $this->assertFalse($this->object->isCanonicalized());
+    }
+
+    /**
+     * @covers WebinoCanonicalRedirect\Uri\Canonicalizer::www
+     */
+    public function testWwwUseNotLocalhost()
+    {
+        $this->uri->expects($this->once())
+            ->method('getHost')
+            ->will($this->returnValue('localhost'));
+
+        $this->uri->expects($this->never())
+            ->method('setHost');
+
+        $this->object->www(false);
+        $this->assertFalse($this->object->isCanonicalized());
+    }
+
+    /**
      * @covers WebinoCanonicalRedirect\Uri\Canonicalizer::trailingSlash
      */
     public function testTrailingSlashUseHas()

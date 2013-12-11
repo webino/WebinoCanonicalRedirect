@@ -68,10 +68,13 @@ class Canonicalizer
     {
         $host        = $this->uri->getHost();
         $has         = (0 === strpos($host, 'www'));
-        $isSubdomain = (!$has && 2 <= substr_count($host, '.'));
+        $dotsCount   = substr_count($host, '.');
+        $isSubdomain = (!$has && 2 <= $dotsCount);
+        $isLocalhost = (!$has && 0 === $dotsCount);
 
         if (($has && $useWww) || (!$has && !$useWww)
             || $isSubdomain
+            || $isLocalhost
         ) {
             return $this;
         }
