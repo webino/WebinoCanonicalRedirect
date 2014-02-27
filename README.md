@@ -48,28 +48,32 @@
 
 **Requirements**
 
-  - [Linux](http://www.ubuntu.com/download)
-  - [NetBeans](https://netbeans.org/downloads/) (optional)
-  - [Phing](http://www.phing.info/trac/wiki/Users/Download)
-  - [PHPUnit](http://phpunit.de/manual/3.7/en/installation.html)
   - [PSR-2 coding style](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)
+  - [Linux](http://www.ubuntu.com/download)
+  - [NetBeans](https://netbeans.org/downloads/) (recommended)
+  - [NPM](https://npmjs.org/)
+  - [Grunt](http://gruntjs.com/getting-started)
+  - [PHPUnit](http://phpunit.de/manual/3.7/en/installation.html)
+  - [Selenium](http://www.seleniumhq.org/)
+  - [HtmlUnit](http://htmlunit.sourceforge.net/)
   - [Web browser](https://www.google.com/intl/sk/chrome/browser/) (recommended)
-  - [Selenium](http://www.seleniumhq.org/) (optional)
 
 ### Setup
 
-  1. Clone this repository and run: `phing update`
+  1. Clone this repository and run: `npm install`
+
+  2. To update the development environment run: `grunt update`
 
      *Now your development environment is set.*
 
-  2. Open project in (NetBeans) IDE
+  3. Open a project in the (NetBeans) IDE
 
-  3. To check module integration with the skeleton application open following directory via web browser:
+  4. To check module integration with the skeleton application open following directory via web browser:
      `._test/ZendSkeletonApplication/public/`
 
      e.g. [http://localhost/WebinoCanonicalRedirect/._test/ZendSkeletonApplication/public/](http://localhost/WebinoCanonicalRedirect/._test/ZendSkeletonApplication/public/)
 
-  4. Integration test resources are in directory: `test/resources`
+  5. Integration test resources are in directory: `test/resources`
 
 ### Testing
 
@@ -77,15 +81,21 @@
   - Run `phing test` in the module directory to run the tests and code analysis
 
     *NOTE: To run the code analysis there are some tool requirements.*
-      - [apigen](http://apigen.org/##installation)
       - [pdepend](http://pdepend.org/)
       - [phpcb](https://github.com/Mayflower/PHP_CodeBrowser)
       - [phpcpd](https://github.com/sebastianbergmann/phpcpd)
       - [phpcs](http://pear.php.net/package/PHP_CodeSniffer/)
+      - [phpdoc](http://www.phpdoc.org/)
       - [phploc](https://github.com/sebastianbergmann/phploc)
       - [phpmd](http://phpmd.org/download/index.html)
 
     *NOTE: Those tools are present after development environment is based.*
+
+  - Run `grunt selenium_test` in the module directory to run the Selenium WebDriver tests
+
+    *NOTE: To specify the testing URI set the uri option, e.g. `grunt selenium_test -uri http://example.com/`*
+
+    *NOTE: Selenium server will be started/stopped automatically, assuming `/etc/init.d/selenium` is available to run.*
 
 ## Addendum
 

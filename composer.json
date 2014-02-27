@@ -6,12 +6,18 @@
         "canonical", "uri", "url", "redirect", "zf2", "zend", "framework"
     ],
     "homepage": "http://github.com/webino/WebinoCanonicalRedirect",
-    "license": "New BSD License",
+    "license": "BSD-3-Clause",
     "authors": [
+        {
+            "name": "Webino, s. r. o.",
+            "email": "info@webino.sk",
+            "homepage": "http://webino.sk",
+            "role": "Developer"
+        },
         {
             "name": "Peter Bačinský",
             "email": "peter@bacinsky.sk",
-            "homepage": "http://www.bacinsky.sk/",
+            "homepage": "http://bacinsky.sk",
             "role": "Developer"
         }
     ],
@@ -26,9 +32,10 @@
         "zendframework/zend-mvc": "For URI canonicalization on application bootstrap"
     },
     "require-dev": {
-        "apigen/apigen": "2.*",
+        "element-34/php-webdriver": "1.*",
         "mayflower/php-codebrowser": "*",
         "pdepend/pdepend": "1.*",
+        "phpdocumentor/phpdocumentor": "2.*",
         "phploc/phploc": "*",
         "phpmd/phpmd": "1.*",
         "phpunit/phpunit": "3.7.*",
