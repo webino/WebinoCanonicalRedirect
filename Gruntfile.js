@@ -104,7 +104,7 @@ module.exports = function(grunt) {
                 bin: "vendor/bin/phpunit",
                 coverageHtml: "<%= basedir %>/._log/coverage",
                 testdoxHtml: "<%= basedir %>/._log/testdox.html",
-                coverageClover: "<%= basedir %>/._log/clover.html",
+                coverageClover: "<%= basedir %>/._log/clover.xml",
                 logJunit: "<%= basedir %>/._log/junit.xml",
                 colors: true
             },
