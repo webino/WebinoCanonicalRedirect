@@ -127,14 +127,14 @@ module.exports = function(grunt) {
                 rulesets: "codesize,design,naming,unusedcode",
                 reportFile: "._log/phpmd.xml"
             },
-            package: {dir: "src/<%= pkg.name %>"}
+            package: {dir: "src"}
         },
         phpcpd: {
             options: {
                 bin: "vendor/bin/phpcpd",
                 reportFile: "._log/pmd-cpd.xml"
             },
-            package: {dir: "src/<%= pkg.name %>"}
+            package: {dir: "src"}
         },
         todos: {
             options: {
