@@ -9,7 +9,7 @@
     </filter>
     <testsuites>
         <testsuite name="WebinoCanonicalRedirect Test Suite">
-            <directory>.</directory>
+            <directory>WebinoCanonicalRedirect</directory>
         </testsuite>
     </testsuites>
 </phpunit>
