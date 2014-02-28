@@ -7,6 +7,9 @@ module.exports = function(grunt) {
             log: {
                 src: ["._log"]
             },
+            api: {
+                src: ["._api"]
+            },
             test_app_vendor: {
                 src: ["._test/ZendSkeletonApplication/vendor"]
             },
@@ -230,7 +233,10 @@ module.exports = function(grunt) {
     grunt.registerTask(
         "api",
         "Generate API",
-        ["exec:phpdoc"]
+        [
+            "clean:api",
+            "exec:phpdoc"
+        ]
     );
     grunt.registerTask(
         "precommit:init",
