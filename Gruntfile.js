@@ -134,7 +134,7 @@ module.exports = function(grunt) {
                 bin: "vendor/bin/phpcpd",
                 reportFile: "._log/pmd-cpd.xml"
             },
-            package: {dir: "src"}
+            package: {dir: "src/<%= pkg.name %>"}
         },
         todos: {
             options: {
@@ -223,6 +223,7 @@ module.exports = function(grunt) {
         "Analyze the code",
         [
             "phpmd",
+            "phpcpd",
             "exec:phploc",
             "exec:pdepend",
             "exec:phpcb",
