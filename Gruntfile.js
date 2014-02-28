@@ -22,7 +22,6 @@ module.exports = function(grunt) {
                 options: {
                     create: [
                         "._log",
-                        "._log/api",
                         "._log/code-browser",
                         "._log/coverage"
                     ]
