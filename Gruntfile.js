@@ -116,7 +116,7 @@ module.exports = function(grunt) {
                 extensions: "php",
                 bin: "vendor/bin/phpcs",
                 report: "checkstyle",
-                reportFile: "._log/checkstyle.html",
+                reportFile: "._log/checkstyle.xml",
                 verbose: true
             },
             package: {dir: ["src", "test"]}
