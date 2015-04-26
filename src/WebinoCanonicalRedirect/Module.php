@@ -3,16 +3,16 @@
  * Webino (http://webino.sk)
  *
  * @link        https://github.com/webino/WebinoCanonicalRedirect for the canonical source repository
- * @copyright   Copyright (c) 2014 Webino, s. r. o. (http://webino.sk)
- * @author      Peter Bačinský <peter@bacinsky.sk>
+ * @copyright   Copyright (c) 2014-2015 Webino, s. r. o. (http://webino.sk)
  * @license     BSD-3-Clause
  */
 
 namespace WebinoCanonicalRedirect;
 
+use WebinoCanonicalRedirect\Options\ModuleOptions;
+use WebinoCanonicalRedirect\Uri\Canonicalizer;
 use Zend\Http\Request as HttpRequest;
 use Zend\EventManager\EventInterface;
-use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\BootstrapListenerInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\Mvc\MvcEvent;
@@ -21,7 +21,6 @@ use Zend\Mvc\MvcEvent;
  * WebinoCanonicalRedirect module
  */
 class Module implements
-    AutoloaderProviderInterface,
     BootstrapListenerInterface,
     ConfigProviderInterface
 {
@@ -29,14 +28,15 @@ class Module implements
      * Redirect to the canonicalized URI path
      *
      * @param EventInterface $event
+     * @return void
      */
     public function onBootstrap(EventInterface $event)
     {
-        /* @var $event MvcEvent */
+        /* @var MvcEvent $event */
 
         $app      = $event->getApplication();
         $services = $app->getServiceManager();
-        $options  = $services->get('WebinoCanonicalRedirect\Options\ModuleOptions');
+        $options  = $services->get(ModuleOptions::class);
 
         if (!$options->isEnabled()
             || !($event->getRequest() instanceof HttpRequest)
@@ -44,7 +44,7 @@ class Module implements
             return;
         }
 
-        $uri = $services->get('WebinoCanonicalRedirect\Uri\Canonicalizer');
+        $uri = $services->get(Canonicalizer::class);
         $uri
             ->www($options->useWww())
             ->trailingSlash($options->useSlash());
@@ -54,8 +54,10 @@ class Module implements
         }
 
         $event->stopPropagation();
-        $event
-            ->getResponse()
+
+        $response = $event->getResponse();
+        /** @var \Zend\Http\Response $response */
+        $response
             ->setStatusCode(301)
             ->getHeaders()
             ->addHeaderLine('Location', $uri);
@@ -72,22 +74,5 @@ class Module implements
     public function getConfig()
     {
         return include __DIR__ . '/../../config/module.config.php';
-    }
-
-    /**
-     * @return array
-     */
-    public function getAutoloaderConfig()
-    {
-        return array(
-            'Zend\Loader\ClassMapAutoloader' => array(
-                __DIR__ . '/autoload_classmap.php',
-            ),
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
-                    __NAMESPACE__ => __DIR__,
-                ),
-            ),
-        );
     }
 }
