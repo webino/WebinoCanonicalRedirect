@@ -14,7 +14,14 @@ if (undefined === process.env.NODE_PATH) {
     process.env.NODE_PATH = root;
 }
 module.exports = function(grunt) {
-    grunt.initConfig((function () {
-        return require(root + 'webino-devkit');
-    })().config(grunt, ['module', 'github', 'zend']));
+    grunt.initConfig((function() {
+        var config = (function () {
+            return require(root + 'webino-devkit');
+        })().config(grunt, ['module', 'github', 'zend'])
+
+        // TODO issue https://github.com/zendframework/ZendSkeletonApplication/pull/283/files
+        config.test_app_vendor_git = 'https://github.com/bacinsky';
+        config.test_app_git_branch = 'hotfix/index-php-cli-server';
+        return config;
+    })());
 };
