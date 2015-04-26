@@ -21,4 +21,4 @@ env:
     - URI=http://localhost:8000/
     - BROWSER=chrome
     - GH_REF=github.com/webino/WebinoCanonicalRedirect
-    - secure: TODO
+    - secure: dgJ03wF/YelV7+84tPqsyghdHWYDNV4QQDsGmCoOBbpMsOVTp+KCfaER0hTpYLqBed+N5ukQDBEXQFMrzEPC7C7njW1DY+WgIxHOGOzdHqlN2ZlIG/BbRTA4Tjz1+LJAlZRHVnwGhYW8y5bdzayRVWdaOmxQ/smlf+bgdjUeBEo=

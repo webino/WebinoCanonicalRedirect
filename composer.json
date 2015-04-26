@@ -1,52 +1,47 @@
 {
-    "name": "webino/webino-canonical-redirect",
-    "description": "Site URI Canonicalizer for Zend Framework 2",
-    "type": "library",
+    "name":        "webino/webino-canonical-redirect",
+    "description": "URI Canonicalizer for Zend Framework 2",
+    "homepage":    "http://github.com/webino/WebinoCanonicalRedirect",
+    "type":        "library",
+    "license":     "BSD-3-Clause",
     "keywords": [
-        "canonical", "uri", "url", "redirect", "zf2", "zend", "framework"
+      "canonical",
+      "uri",
+      "url",
+      "redirect",
+      "zf2",
+      "zend",
+      "framework"
     ],
-    "homepage": "http://github.com/webino/WebinoCanonicalRedirect",
-    "license": "BSD-3-Clause",
     "authors": [
         {
-            "name": "Webino, s. r. o.",
-            "email": "info@webino.sk",
+            "name":     "Webino, s. r. o.",
+            "email":    "info@webino.sk",
             "homepage": "http://webino.sk",
-            "role": "Developer"
+            "role":     "Developer"
         },
         {
-            "name": "Peter Bačinský",
-            "email": "peter@bacinsky.sk",
+            "name":     "Peter Bacinsky",
+            "email":    "peter@bacinsky.sk",
             "homepage": "http://bacinsky.sk",
-            "role": "Developer"
+            "role":     "Developer"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.5",
         "zendframework/zend-stdlib": "2.*",
         "zendframework/zend-uri": "2.*"
     },
     "suggest": {
         "zendframework/zend-modulemanager": "To use it as a Zend Framework module",
-        "zendframework/zend-mvc": "For URI canonicalization on application bootstrap"
+        "zendframework/zend-mvc": "For URI canonicalization on an application bootstrap"
     },
     "require-dev": {
-        "element-34/php-webdriver": "1.*",
-        "mayflower/php-codebrowser": "*",
-        "pdepend/pdepend": "1.*",
-        "phpdocumentor/phpdocumentor": "2.*",
-        "phploc/phploc": "*",
-        "phpmd/phpmd": "1.*",
-        "phpunit/phpunit": "3.7.*",
-        "satooshi/php-coveralls": "0.*",
-        "sebastian/phpcpd": "*",
-        "squizlabs/php_codesniffer": "1.*",
-        "webino/zf2nette-debug" : "1.*",
-        "zendframework/zendframework": "2.*"
+        "webino/webino-dev": "dev-develop",
+        "webino/webino-debug": "dev-develop"
     },
     "autoload": {
-        "psr-0": {
-            "WebinoCanonicalRedirect": "src/"
-        }
+        "psr-0": {"WebinoCanonicalRedirect": "src/"}
     }
 }
