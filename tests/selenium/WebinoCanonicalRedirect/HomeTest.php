@@ -9,6 +9,8 @@
 
 namespace WebinoCanonicalRedirect;
 
+use WebinoDev\Test\Selenium\AbstractTestCase;
+
 /**
  * Class HomeTest
  */
@@ -24,12 +26,15 @@ class HomeTest extends AbstractTestCase
         $this->session->open($this->uri . 'index.php');
         $url = $this->session->url();
         $this->assertRegExp('~\/(?!index.php)$~', $url);
+
         $this->session->open($this->uri . 'index.php?anyQueryParams=test');
         $url = $this->session->url();
         $this->assertRegExp('~\/(?!index.php)\?anyQueryParams=test$~', $url);
+
         $this->session->open($this->uri . 'index.php/test-path/?anyQueryParams=test');
         $url = $this->session->url();
         $this->assertRegExp('~\/(?!index.php)test-path\?anyQueryParams=test$~', $url);
+
         $this->session->open($this->uri . 'test-trailing-slash/');
         $url = $this->session->url();
         $this->assertRegExp('~\/test-trailing-slash$~', $url);
