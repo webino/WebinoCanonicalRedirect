@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/webino/WebinoCanonicalRedirect.png?branch=develop)](http://travis-ci.org/webino/WebinoCanonicalRedirect "Develop Build Status")
 [![Coverage Status](https://coveralls.io/repos/webino/WebinoCanonicalRedirect/badge.png?branch=develop)](https://coveralls.io/r/webino/WebinoCanonicalRedirect?branch=develop "Develop Coverage Status")
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/webino/WebinoCanonicalRedirect/badges/quality-score.png?s=f608383f40b945e5667f9a0e1ae9c41616454a13)](https://scrutinizer-ci.com/g/webino/WebinoCanonicalRedirect/ "Quality Score")
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/webino/WebinoCanonicalRedirect/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/webino/WebinoCanonicalRedirect/?branch=develop  "Quality Score")
 [![Dependency Status](https://www.versioneye.com/user/projects/52a19caa632bac3bd6000040/badge.png)](https://www.versioneye.com/user/projects/52a19caa632bac3bd6000040 "Develop Dependency Status")
 <br />
 [![Latest Stable Version](https://poser.pugx.org/webino/webino-canonical-redirect/v/stable.png)](https://packagist.org/packages/webino/webino-canonical-redirect "Latest Stable Version")
