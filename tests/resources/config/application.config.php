@@ -16,7 +16,7 @@ return [
     'modules' => [
         'WebinoDev',
         'WebinoDebug',
-        'WebinoCanonicalRedirect',
+        __NAMESPACE__,
         'Application',
     ],
     'module_listener_options' => [
