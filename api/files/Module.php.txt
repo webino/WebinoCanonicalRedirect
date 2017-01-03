@@ -3,7 +3,7 @@
  * Webino (http://webino.sk)
  *
  * @link        https://github.com/webino/WebinoCanonicalRedirect for the canonical source repository
- * @copyright   Copyright (c) 2014-2015 Webino, s. r. o. (http://webino.sk)
+ * @copyright   Copyright (c) 2014-2017 Webino, s. r. o. (http://webino.sk)
  * @license     BSD-3-Clause
  */
 
@@ -27,13 +27,11 @@ class Module implements
     /**
      * Redirect to the canonicalized URI path
      *
-     * @param EventInterface $event
+     * @param EventInterface|MvcEvent $event
      * @return void
      */
     public function onBootstrap(EventInterface $event)
     {
-        /* @var MvcEvent $event */
-
         $app      = $event->getApplication();
         $services = $app->getServiceManager();
         $options  = $services->get(ModuleOptions::class);
@@ -65,7 +63,7 @@ class Module implements
         unset($uri);
 
         $app->getEventManager()
-            ->trigger(MvcEvent::EVENT_FINISH, $event);
+            ->trigger(MvcEvent::EVENT_FINISH, (new MvcEvent)->setResponse($response));
     }
 
     /**
