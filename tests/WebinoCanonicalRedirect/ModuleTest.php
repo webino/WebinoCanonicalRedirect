@@ -11,7 +11,8 @@
 namespace WebinoCanonicalRedirect;
 
 use Zend\EventManager\EventManager;
-use Zend\Http\Request;
+use Zend\Http;
+use Zend\Mvc\Application;
 use Zend\Mvc\MvcEvent;
 use Zend\ServiceManager\ServiceManager;
 
@@ -58,7 +59,7 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
     {
         $this->object = new Module;
 
-        $app = $this->getMock(\Zend\Mvc\Application::class, [], [], '', false);
+        $app = $this->getMock(Application::class, [], [], '', false);
         $this->canonicalizer = $this->getMock(
             Uri\Canonicalizer::class,
             [],
@@ -69,7 +70,7 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
         $this->event   = $this->getMock(MvcEvent::class);
         $this->events  = $this->getMock(EventManager::class);
         $this->options = $this->getMock(Options\ModuleOptions::class);
-        $this->request = $this->getMock(Request::class);
+        $this->request = $this->getMock(Http\Request::class);
         $services      = $this->getMock(ServiceManager::class);
 
         $this->event->expects($this->any())
@@ -126,8 +127,8 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
      */
     public function testOnBootstrap()
     {
-        $response = $this->getMock('Zend\Http\Response');
-        $headers  = $this->getMock('Zend\Http\Headers');
+        $response = $this->getMock(Http\Response::class);
+        $headers  = $this->getMock(Http\Headers::class);
 
         $this->event->expects($this->any())
             ->method('getRequest')
@@ -171,13 +172,24 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
             ->with('Location', $this->canonicalizer);
 
         $this->events->expects($this->once())
-            ->method('trigger')
+            ->method('attach')
             ->with(
                 $this->callback(function ($event) {
-                    return MvcEvent::EVENT_FINISH === $event;
+                    return MvcEvent::EVENT_ROUTE === $event;
                 }),
-                $this->callback(function ($event) {
-                    return $event !== $this->event;
+                $this->callback(function ($callback) {
+                    $response = rand();
+                    $event    = $this->getMock(MvcEvent::class);
+
+                    $event->expects($this->once())
+                        ->method('stopPropagation');
+
+                    $event->expects($this->once())
+                        ->method('getResponse')
+                        ->will($this->returnValue($response));
+
+                    $this->assertSame(call_user_func($callback, $event), $response);
+                    return is_callable($callback);
                 })
             );
 
@@ -212,7 +224,7 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
             ->method('getResponse');
 
         $this->events->expects($this->never())
-            ->method('trigger');
+            ->method('attach');
 
         $this->object->onBootstrap($this->event);
     }
@@ -247,7 +259,7 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
             ->method('getResponse');
 
         $this->events->expects($this->never())
-            ->method('trigger');
+            ->method('attach');
 
         $this->object->onBootstrap($this->event);
     }
@@ -282,7 +294,7 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
             ->method('getResponse');
 
         $this->events->expects($this->never())
-            ->method('trigger');
+            ->method('attach');
 
         $this->object->onBootstrap($this->event);
     }
