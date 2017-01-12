@@ -62,8 +62,10 @@ class Module implements
 
         unset($uri);
 
-        $app->getEventManager()
-            ->trigger(MvcEvent::EVENT_FINISH, (new MvcEvent)->setResponse($response));
+        $app->getEventManager()->attach(MvcEvent::EVENT_ROUTE, function (MvcEvent $event) {
+            $event->stopPropagation();
+            return $event->getResponse();
+        }, 9999999);
     }
 
     /**
