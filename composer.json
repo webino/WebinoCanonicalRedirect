@@ -55,7 +55,7 @@
     "extra": {
         "webino-devkit": {
             "context": ["module", "github", "zend"],
-            "ZendSkeletonApplication": "release-2.2.8"
+            "ZendSkeletonApplication": "release-2.5.0"
         }
     }
 }
