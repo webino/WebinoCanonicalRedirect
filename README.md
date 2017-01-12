@@ -15,8 +15,6 @@
 
   If you can't or don't know how to configure your web server rewrites to handle URI duplicate content, this module is the smart solution.
 
-  **Under development, please report any issues.**
-
 ## Features
 
   - Redirects `..domain.tld/index.php` to `..domain.tld`
@@ -41,7 +39,6 @@ Copy, paste & override following settings to your configuration:
     ),
 
 ## Development
-[![Dependency Status](https://www.versioneye.com/user/projects/553c37fc1d2989f7ee000153/badge.svg?style=flat)](https://www.versioneye.com/user/projects/553c37fc1d2989f7ee000153)
 
 We will appreciate any contributions on development of this module.
 
