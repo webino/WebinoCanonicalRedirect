@@ -3,7 +3,7 @@
  * Webino (http://webino.sk)
  *
  * @link        https://github.com/webino/WebinoCanonicalRedirect for the canonical source repository
- * @copyright   Copyright (c) 2014 Webino, s. r. o. (http://webino.sk)
+ * @copyright   Copyright (c) 2014-2017 Webino, s. r. o. (http://webino.sk)
  * @author      Peter Bačinský <peter@bacinsky.sk>
  * @license     BSD-3-Clause
  */
@@ -32,16 +32,7 @@ class ModuleOptionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tears down the fixture, for example, closes a network connection.
-     * This method is called after a test is executed.
-     */
-    protected function tearDown()
-    {
-
-    }
-
-    /**
-     *
+     * @return void
      */
     public function testAssertDefaultOptions()
     {
@@ -51,7 +42,7 @@ class ModuleOptionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     *
+     * @return void
      */
     public function testSettersAndGetters()
     {

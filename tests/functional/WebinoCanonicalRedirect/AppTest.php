@@ -3,14 +3,12 @@
  * Webino (http://webino.sk/)
  *
  * @link        https://github.com/webino/WebinoCanonicalRedirect/ for the canonical source repository
- * @copyright   Copyright (c) 2014-2015 Webino, s. r. o. (http://webino.sk/)
+ * @copyright   Copyright (c) 2014-2017 Webino, s. r. o. (http://webino.sk/)
  * @license     BSD-3-Clause
  */
 
 namespace WebinoCanonicalRedirect;
 
-use /** @noinspection PhpUnusedAliasInspection */
-    Yandex\Allure\Adapter\Annotation\Title;
 use WebinoDev\Test;
 use Zend\ServiceManager\ServiceManager;
 
@@ -34,7 +32,7 @@ class AppTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Title("Application works")
+     * Application works
      */
     public function testGetServiceManager()
     {

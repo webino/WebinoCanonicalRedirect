@@ -17,11 +17,11 @@ use WebinoDev\Test\Selenium\AbstractTestCase;
 class HomeTest extends AbstractTestCase
 {
     /**
-     *
+     * Test the redirection
      */
     public function testHome()
     {
-        $this->openOk();
+        $this->open();
 
         $this->session->open($this->uri . 'index.php');
         $url = $this->session->url();
