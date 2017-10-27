@@ -1,22 +1,51 @@
-### Welcome to GitHub Pages.
-This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:
+# URI Canonicalizer <br /> for Zend Framework 2
 
-```
-$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-```
+[![Build Status](https://secure.travis-ci.org/webino/WebinoCanonicalRedirect.png?branch=develop)](http://travis-ci.org/webino/WebinoCanonicalRedirect "Develop Build Status")
+[![Coverage Status](https://coveralls.io/repos/webino/WebinoCanonicalRedirect/badge.png?branch=develop)](https://coveralls.io/r/webino/WebinoCanonicalRedirect?branch=develop "Develop Coverage Status")
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/webino/WebinoCanonicalRedirect/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/webino/WebinoCanonicalRedirect/?branch=develop  "Quality Score")
+[![Dependency Status](https://www.versioneye.com/user/projects/52a19caa632bac3bd6000040/badge.png)](https://www.versioneye.com/user/projects/52a19caa632bac3bd6000040 "Develop Dependency Status")
+<br />
+[![Latest Stable Version](https://poser.pugx.org/webino/webino-canonical-redirect/v/stable.png)](https://packagist.org/packages/webino/webino-canonical-redirect "Latest Stable Version")
+[![Total Downloads](https://poser.pugx.org/webino/webino-canonical-redirect/downloads.png)](https://packagist.org/packages/webino/webino-canonical-redirect "Total Downloads")
+[![Latest Unstable Version](https://poser.pugx.org/webino/webino-canonical-redirect/v/unstable.png)](https://packagist.org/packages/webino/webino-canonical-redirect "Latest Unstable Version")
+[![License](https://poser.pugx.org/webino/webino-canonical-redirect/license.svg)](https://packagist.org/packages/webino/webino-canonical-redirect)
 
-If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.
 
-### Designer Templates
-We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.
+  Allows you to configure www and trailing slash of your web site canonical URI. If wrong URI format is provided redirects to the canonicalized URI with HTTP 301.
 
-### Rather Drive Stick?
-If you prefer to not use the automatic generator, push a branch named `gh-pages` to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.
+  If you can't or don't know how to configure your web server rewrites to handle URI duplicate content, this module is the smart solution.
 
-### Authors and Contributors
-You can @mention a GitHub username to generate a link to their profile. The resulting `<a>` element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (@defunkt), PJ Hyett (@pjhyett), and Tom Preston-Werner (@mojombo) founded GitHub.
+## Features
 
-### Support or Contact
-Having trouble with Pages? Check out the documentation at https://help.github.com/pages or contact support@github.com and we’ll help you sort it out.
+  - Redirects `..domain.tld/index.php` to `..domain.tld`
+  - Configure site to use www  `www.domain.tld` or not `domain.tld`
+  - Configure site to use trailing slash `..domain.tld/something/` or not `..domain.tld/something`
+
+## Setup
+
+  Following steps are necessary to get this module working, considering a zf2-skeleton or very similar application:
+
+  1. Run: `php composer.phar require webino/webino-canonical-redirect:dev-develop`
+  3. Add `WebinoCanonicalRedirect` to the enabled modules list
+
+## QuickStart
+
+Copy, paste & override following settings to your configuration:
+
+    'webino_canonical_redirect' => array(
+        'enabled' => true,
+        'www'     => false,     // bool = enabled|Use URI with www
+        'slash'   => false,     // bool = enabled|Use URI with trailing slash
+    ),
+
+## Development
+
+We will appreciate any contributions on development of this module.
+
+Learn [How to develop Webino modules](https://github.com/webino/Webino/wiki/How-to-develop-Webino-module)
+
+## Addendum
+
+  Please, if you are interested in this Zend Framework module report any issues and don't hesitate to contribute.
+
+[Report a bug](https://github.com/webino/WebinoCanonicalRedirect/issues) | [Fork me](https://github.com/webino/WebinoCanonicalRedirect)
